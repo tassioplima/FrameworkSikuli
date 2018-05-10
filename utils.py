@@ -1,17 +1,21 @@
+import xlwt, xlrd, os
+from itertools import islice
 #Utils for Sikuli  - Tassio Lima
 
 
 #Method printscreen         
 def getPrint(arq):
-    newpath = r'C:\\evidencias\\testes'    
+    newpath = r'.\\evidence\\print'    
     finalpath = path.join(newpath)
     img = capture (SCREEN)
     pathing = path.join(finalpath, arq+'.png')
     shutil.move(img, pathing)
 
-#Method read XLS 
 def readXls(linha, coluna):
-    excel = 'C:\\Users\\BR3TPL\\Documents\\Projetos\\testesikuli.sikuli\\test.xls'
+    dir = '.\\read'    
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    excel = '.\\read\\massa.xls'
     book = xlrd.open_workbook(excel)
     sh = book.sheet_by_index(0)
     escreva = Env.getClipboard().strip()
@@ -19,16 +23,16 @@ def readXls(linha, coluna):
     return escreva
 
 #Method write XLS
-def writeXls(linha, coluna, valor):
+def writXls(linha, coluna, valor):
+    dir = '.\\write'
     workbook = xlwt.Workbook(encoding = 'utf-8')
-    worksheet = workbook.add_sheet('Plan1', cell_overwrite_ok=True)
-    worksheet.write(linha, coluna, valor )
-    workbook.save('./evidencias/')
+    worksheet = workbook.add_sheet('Conteudo', cell_overwrite_ok=True)
+    worksheet.write(linha, coluna, valor)
+    if not os.path.exists(dir):
+        os.makedirs(dir)
+    workbook.save('C:\\esc\\write\\arquivo.xls')
 
 #Method read text img
-def captText(image):
+def capText(image):
     valor = find(image).text()
     return valor
-
-
-    
