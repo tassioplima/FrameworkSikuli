@@ -1,5 +1,6 @@
-import xlwt, xlrd, os
+import xlwt, xlrd, shutil, os
 from itertools import islice
+from os import path
 #Utils for Sikuli  - Tassio Lima
 
 
