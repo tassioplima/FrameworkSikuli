@@ -1,15 +1,15 @@
-import unittest, HTMLTestRunner, shutil, xlwt, xlrd
-from itertools import islice
-from os import path
 from sikuli import *
-import utils
-#Variáveis de print
+import unittest, HTMLTestRunner, shutil, utils
 
-#Variáveis de report
-outfile = open("C:\\evidencias\\testes\\report.html", "w+") # path to report folder
-screenshotfile = "C:\\evidencias\\testes"
+
 #Google Chrome
 chrome = 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
+
+dir = '.\\evidence\\test'
+if not os.path.exists(dir):
+        os.makedirs(dir)
+outfile = open(".\\evidence\\test\\report.html", "w+") # path to report folder
+screenshotfile = ".\\evidence\\test"
 
 #Suite test
 class testeChrome(unittest.TestCase):
@@ -20,20 +20,20 @@ class testeChrome(unittest.TestCase):
         wait(1)
         
     #Test Case    
-    def test_AcessarGoogle(self):  
+    def test_AcessarGoogle(self):
+      #  readXls(1,0)
         paste('1525954718691.png', readXls(1,0))
         type(Key.ENTER)
         wait(3)
         valor = capText('1525970454192.png')
         print('Passo 1 retorno de resultado: '+ valor )
-        getPrint('Passo2')
+        writXls(0,0, valor)
+        getPrint('Passo2')     
 
     #Destructor            
     def tearDown(self):
         #pass
         type(Key.F4, KeyModifier.ALT)
-
-
 
 #Report    
 suite = unittest.TestLoader().loadTestsFromTestCase(testeChrome)
