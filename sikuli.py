@@ -1,6 +1,5 @@
 from sikuli import *
-import unittest, HTMLTestRunner, shutil, utils
-
+import unittest, HTMLTestRunner, utils
 
 #Google Chrome
 chrome = 'C:\Program Files (x86)\Google\Chrome\Application\chrome.exe'
@@ -22,7 +21,8 @@ class testeChrome(unittest.TestCase):
     #Test Case    
     def test_AcessarGoogle(self):
       #  readXls(1,0)
-        paste('1525954718691.png', readXls(1,0))
+        getPrint('teste123')
+        paste('1525954718691.png',)
         type(Key.ENTER)
         wait(3)
         valor = capText('1525970454192.png')
