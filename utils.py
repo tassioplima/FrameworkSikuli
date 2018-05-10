@@ -30,7 +30,7 @@ def writXls(linha, coluna, valor):
     worksheet.write(linha, coluna, valor)
     if not os.path.exists(dir):
         os.makedirs(dir)
-    workbook.save('C:\\esc\\write\\arquivo.xls')
+    workbook.save('.\\write\\arquivo.xls')
 
 #Method read text img
 def capText(image):
